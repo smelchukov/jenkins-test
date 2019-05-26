@@ -12,11 +12,6 @@ pipeline {
                 echo 'Testing..'
             }
         }
-        stage('Stop') {
-            steps {
-                sh 'docker-compose down'
-            }
-        }
         stage('Deploy') {
             steps {
                 sh 'docker-compose up -d'
