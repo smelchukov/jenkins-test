@@ -1,10 +1,10 @@
 pipeline {
-    agent any
+    agent test-prod
 
     stages {
         stage('Build') {
             steps {
-                echo 'Building..'
+                docker-compose up
             }
         }
         stage('Test') {
@@ -12,9 +12,14 @@ pipeline {
                 echo 'Testing..'
             }
         }
+        stage('Stop') {
+            steps {
+                docker-compose down
+            }
+        }
         stage('Deploy') {
             steps {
-                echo 'Deploying....'
+                docker-compose up -d
             }
         }
     }
