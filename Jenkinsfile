@@ -14,12 +14,12 @@ pipeline {
         }
         stage('Stop') {
             steps {
-                docker-compose down
+                sh 'docker-compose down'
             }
         }
         stage('Deploy') {
             steps {
-                docker-compose up -d
+                sh 'docker-compose up -d'
             }
         }
     }
