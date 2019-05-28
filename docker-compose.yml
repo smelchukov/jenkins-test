@@ -4,3 +4,4 @@ services:
     image: bitnami/redis:5.0.5
     environment:
       - ALLOW_EMPTY_PASSWORD=yes
+      - FOO
