@@ -1,6 +1,7 @@
 pipeline {
     environment {
         FOO = "foo"
+        SECRET = credentials('secret')
     }
     
     agent { label 'test-prod' }
