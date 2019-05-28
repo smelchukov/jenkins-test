@@ -1,4 +1,8 @@
 pipeline {
+    environment {
+        FOO = "foo"
+    }
+    
     agent { label 'test-prod' }
 
     stages {
