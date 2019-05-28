@@ -5,3 +5,4 @@ services:
     environment:
       - ALLOW_EMPTY_PASSWORD=yes
       - FOO
+      - SECRET
