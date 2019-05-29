@@ -1,8 +1,11 @@
 pipeline {
-    environment {
-        if (env.BRANCH_NAME == 'master') {
+    
+    if (env.BRANCH_NAME == 'master') {
+        environment {
             FOO = "foo-master"
-        } else {
+        }
+    } else {
+        environment {
             FOO = "foo"
             SECRET = credentials('secret')
         }
