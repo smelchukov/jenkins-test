@@ -1,7 +1,11 @@
 pipeline {
     environment {
-        FOO = "foo"
-        SECRET = credentials('secret')
+        if (env.BRANCH_NAME == 'master') {
+            FOO = "foo-master"
+        } else {
+            FOO = "foo"
+            SECRET = credentials('secret')
+        }
     }
     
     agent { label 'test-prod' }
