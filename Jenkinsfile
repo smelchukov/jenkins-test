@@ -1,12 +1,12 @@
 def agentLabel
-if (${env.BRANCH_NAME} == "master") {
+if (env.BRANCH_NAME == "master") {
     agentLabel = "test-prod"
 } else {
     agentLabel = "prod"
 }
 
 def getFoo(branch) {
-  if (${env.BRANCH_NAME} == 'master') {
+  if (env.BRANCH_NAME == 'master') {
     return 'Foo-production'
   } else {
     return 'Foo-staging'
