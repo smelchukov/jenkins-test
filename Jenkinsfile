@@ -1,5 +1,5 @@
 def agentLabel
-if (BRANCH_NAME == "master") {
+if (branch == "master") {
     agentLabel = "test-prod"
 } else {
     agentLabel = "prod"
