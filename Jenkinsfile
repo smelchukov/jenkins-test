@@ -1,22 +1,12 @@
-def branchName = readFile('branch').trim()
-echo 'My branch is' + branchName
-
 def agentLabel
-if (branchName == "master") {
+if (BRANCH_NAME == "master") {
     agentLabel = "test-prod"
 } else {
     agentLabel = "prod"
 }
 
-def getCurrentBranch () {
-    return sh (
-        script: 'git rev-parse --abbrev-ref HEAD',
-        returnStdout: true
-    ).trim()
-}
-
 def getFoo() {
-  if (branchName == 'master') {
+  if (BRANCH_NAME == 'master') {
     return 'Foo-production'
   } else {
     return 'Foo-staging'
