@@ -25,7 +25,11 @@ pipeline {
                 echo BRANCH_NAME
             }
         }
-        stage('Deploy') {
+        stage('Prod Deploy') {
+            when {
+                branch 'master'
+            }
+
             steps {
                 sh 'docker-compose up -d'
             }
