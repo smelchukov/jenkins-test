@@ -5,7 +5,7 @@ if (env.BRANCH_NAME == "master") {
     agentLabel = "prod"
 }
 
-def getFoo(branch) {
+def getFoo() {
   if (env.BRANCH_NAME == 'master') {
     return 'Foo-production'
   } else {
@@ -16,7 +16,7 @@ def getFoo(branch) {
 pipeline {
     
     environment {
-        FOO = "foo-master"
+        FOO = getFoo()
         SECRET = credentials('secret')
     }
     
