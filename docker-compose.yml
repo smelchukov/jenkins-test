@@ -2,7 +2,7 @@ version: '3'
 services:
   redis:
     image: bitnami/redis:5.0.5
-    env.BRANCH_NAME
+    restart: always
     environment:
       - ALLOW_EMPTY_PASSWORD=yes
       - FOO
