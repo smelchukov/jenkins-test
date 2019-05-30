@@ -1,14 +1,23 @@
+def agentLabel
+if (BRANCH_NAME == "master") {
+    agentLabel = "test-prod"
+} else {
+    agentLabel = "prod"
+}
+
+def getFoo(branch) {
+  if (branch == 'master') {
+    return 'Foo-production'
+  } else {
+    return 'Foo-staging'
+ }
+}
+
 pipeline {
     
-    if (env.BRANCH_NAME == 'master') {
-        environment {
-            FOO = "foo-master"
-        }
-    } else {
-        environment {
-            FOO = "foo"
-            SECRET = credentials('secret')
-        }
+    environment {
+        FOO = "foo-master"
+        SECRET = credentials('secret')
     }
     
     agent { label 'test-prod' }
