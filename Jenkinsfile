@@ -1,4 +1,4 @@
-def branchName = getCurrentBranch()
+def branchName = readFile('branch').trim()
 echo 'My branch is' + branchName
 
 def agentLabel
