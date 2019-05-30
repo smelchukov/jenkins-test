@@ -5,7 +5,16 @@ if (env.BRANCH_NAME == "master") {
     agentLabel = "prod"
 }
 
-echo "branch is: ${env.BRANCH_NAME}"
+echo "branch is: ${BRANCH_NAME}"
+def branchName = getCurrentBranch()
+echo 'My branch is' + branchName
+
+def getCurrentBranch () {
+    return sh (
+        script: 'git rev-parse --abbrev-ref HEAD',
+        returnStdout: true
+    ).trim()
+}
 
 def getFoo() {
   if (env.BRANCH_NAME == 'master') {
