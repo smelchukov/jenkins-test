@@ -5,20 +5,9 @@ if (BRANCH_NAME == "master") {
     agentLabel = "prod"
 }
 
-def getFoo() {
-  if (BRANCH_NAME == 'master') {
-    return FOO_PROD
-  } else {
-    return FOO_STAGING
- }
-}
-
 pipeline {
     
     environment {
-        FOO_STAGING = 's'
-        FOO_PROD = 'p'
-        FOO = getFoo()
         SECRET = credentials('secret')
     }
     
