@@ -5,6 +5,8 @@ if (env.BRANCH_NAME == "master") {
     agentLabel = "prod"
 }
 
+echo "branch is: ${env.BRANCH_NAME}"
+
 def getFoo() {
   if (env.BRANCH_NAME == 'master') {
     return 'Foo-production'
@@ -31,6 +33,7 @@ pipeline {
         stage('Test') {
             steps {
                 echo 'Testing..2'
+                echo env.BRANCH_NAME
             }
         }
         stage('Deploy') {
