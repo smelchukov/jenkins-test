@@ -1,13 +1,12 @@
+def branchName = getCurrentBranch()
+echo 'My branch is' + branchName
+
 def agentLabel
-if (env.BRANCH_NAME == "master") {
+if (branchName == "master") {
     agentLabel = "test-prod"
 } else {
     agentLabel = "prod"
 }
-
-echo "branch is: ${BRANCH_NAME}"
-def branchName = getCurrentBranch()
-echo 'My branch is' + branchName
 
 def getCurrentBranch () {
     return sh (
@@ -17,7 +16,7 @@ def getCurrentBranch () {
 }
 
 def getFoo() {
-  if (env.BRANCH_NAME == 'master') {
+  if (branchName == 'master') {
     return 'Foo-production'
   } else {
     return 'Foo-staging'
