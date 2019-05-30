@@ -29,7 +29,10 @@ pipeline {
             when {
                 branch 'master'
             }
-
+            environment {
+                FOO='inner'
+                SECRET = credentials('secret')
+            }
             steps {
                 sh 'docker-compose up -d'
             }
