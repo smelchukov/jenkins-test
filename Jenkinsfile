@@ -7,15 +7,17 @@ if (BRANCH_NAME == "master") {
 
 def getFoo() {
   if (BRANCH_NAME == 'master') {
-    return 'Foo-production'
+    return FOO_PROD
   } else {
-    return 'Foo-staging'
+    return FOO_STAGING
  }
 }
 
 pipeline {
     
     environment {
+        FOO_STAGING = 's'
+        FOO_PROD = 'p'
         FOO = getFoo()
         SECRET = credentials('secret')
     }
