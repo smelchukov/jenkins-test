@@ -1,42 +1,25 @@
-
-def agentLabel
-if (BRANCH_NAME == "master") {
-    agentLabel = "test-prod"
-} else {
-    agentLabel = "prod"
-}
-
 pipeline {
     
-    environment {
-        SECRET = credentials('secret')
-    }
-    
-    agent { label 'test-prod' }
+    agent { label 'jenkins' }
 
     stages {
         stage('Build') {
             steps {
-                sh 'docker-compose build'
+                sh 'echo build'
             }
         }
+
         stage('Test') {
             steps {
-                echo 'Testing..2'
-                echo BRANCH_NAME
+                echo 'Testing'
             }
         }
-        stage('Prod Deploy') {
-            when {
-                branch 'master'
-            }
-            environment {
-                FOO='inner'
-                SECRET = credentials('secret')
-            }
+        
+        stage('Deploy') {
             steps {
-                sh 'docker-compose up -d'
+                sh 'echo deploy'
             }
         }
+
     }
 }
